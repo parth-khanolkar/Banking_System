@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Withdraw{% endblock title %}
+
+{% block body %}
+<br>    
+<h1 style="text-align:center;">Withdraw Money</h1>
+
+<div class="container1 text-center my-4 mx-150" style="max-width: 400px; margin: auto; border:2px solid black; padding:13px; border-radius: 5px; background-color: rgb(238, 238, 238);" >
+    
+    {% load crispy_forms_tags %}
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <br>
+        <input type="submit" class="btn btn-success my-2 mx-3" value="Withdraw">
+        <a href="{% url 'Users' %}" class="btn btn-primary">Back</a>
+    </form>
+</div>
+
+{% endblock body %}

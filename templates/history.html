@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}Transaction History{% endblock title %}
+
+{% block body %}
+<div class="container-fluid text-Dark py-1 text-center">
+    <h1>Transaction History</h1>
+</div>
+
+<div class="container row text-center py-4" style="margin: auto;">
+    <div class="col-md-12">
+        <table class="table table-dark table-striped table-hover">
+            <thead class="table-dark">
+                <th>ID</th>
+                <th>User</th>
+                <th>Email-Id</th>
+                <th>Contact</th>
+                <th>Amount (₹)</th>
+                <th>Action</th>
+                <th>Status</th>
+            </thead>
+            <tbody>
+                {% for i in data %}
+                    <tr>
+                        <td>{{i.id}}</td>
+                        <td>{{i.username}}</td>
+                        <td>{{i.email_id}}</td>
+                        <td>{{i.contact}}</td>
+                        <td>{{i.amount}}</td>
+                        
+                        {% if i.action == "Deposit" %}
+                            <td style="color: cornflowerblue;">{{i.action}}</td>
+                        {% elif i.action == "Withdraw" %}
+                            <td style="color: orange;">{{i.action}}</td>
+                        {% elif i.action == "Transfer" %}
+                            <td style="color: light;">{{i.action}}</td>
+                        {% endif %}
+
+                        {% if i.status == "Success" %}
+                            <td style="color: chartreuse;">{{i.status}}</td>
+                        {% else %}
+                            <td style="color: red;">{{i.status}}</td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock body %}
